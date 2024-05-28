@@ -1,2 +1,4 @@
 # CPP
-C++ FAQs
+## Basic C++ Syntax and Semantics
+- Main():
+  jdfk
