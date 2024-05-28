@@ -117,4 +117,25 @@ void fn(carPtr car)
 } // car get's deleted here, since ownership has been transferred
 ```
 
+### Stream Output
+> Cout looks as if it is shifting stuff into the output stream object. Sometimes they are buffered, before sending it to the actual destination, for performance improvements. But this can be bypassed, using the flush() command.
+```c++
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello World" << "\n" << flush; // Manual next line and flush
+    cout << "Hello World" << endl; // Combines the next line followed by flush
+    //Flushing I/O buffers can slow down the application
+    //So should be avoided
+}
+```
+
+### Stream Input
+> Cin looks as if it is shifting stuff from the input stream object. There is no need to flush the stream, after a cout right before cin, since cout takes care of it.
+
+### Variable Declaration
+> In C style programming, the variables are conventionally created in the beginning of the scope. It promotes, readability, maintainability, scope clarity, and avoids uninitialised variables. In older compilers, it's more efficient when the variables are created in the beginning. Although, recent C compilers have been optimised for "mixed declarations and code". Yet the convention in C seems to remain the same.
+> In C++ style programmming, it is advised to create variables as and when required, since some parts of the code can be avoided due to control flows and alternate variables can be created accordingly. This is a minor improvement over the C convention. Nothing to lose by following this newer convention, in some cases, we have something to gain. 
+
 
