@@ -232,6 +232,7 @@ int main() {
     BlueRayPlayer b;
     initPlayer(m); //is-a conversion at the parameter level
     initPlayer(b); //dynamic binding inside the body of the function
+    //old code calling new code
 }
 ```
 
