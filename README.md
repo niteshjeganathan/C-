@@ -136,6 +136,7 @@ int main() {
 
 ### Variable Declaration
 > In C style programming, the variables are conventionally created in the beginning of the scope. It promotes, readability, maintainability, scope clarity, and avoids uninitialised variables. In older compilers, it's more efficient when the variables are created in the beginning. Although, recent C compilers have been optimised for "mixed declarations and code". Yet the convention in C seems to remain the same.
+
 > In C++ style programmming, it is advised to create variables as and when required, since some parts of the code can be avoided due to control flows and alternate variables can be created accordingly. This is a minor improvement over the C convention. Nothing to lose by following this newer convention, in some cases, we have something to gain. 
 
 
