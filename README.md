@@ -154,7 +154,7 @@ int main() {
 ```
 
 ### Constructor
-> Special member function used to "construct" an object by initialising member data. They are not virtual, and have no return type. It allows an initialisation list for convenience.
+> Special member function used to "construct" an object by initialising member data. They are not virtual, and have no return type. It allows an initialisation list for convenience. When a constuctor isn't defined, a default constructor that does nothing is implicitly defined by the compiler. When a parameterised constructor is already present, a default constructor is not implicitly defined by the compiler.
 ```c++
 #include <iostream>
 using namespace std;
@@ -164,7 +164,8 @@ private:
     string manufacturer; 
     int horsepower; 
     string model;
-public: 
+public:
+    Bike() = default; // Explicit DEclaration of a default constructor
     Bike(string m, int h, string mo) : manufacturer(m), horsepower(h), model(mo) {
         //Constructor body
     }
@@ -172,6 +173,65 @@ public:
 
 int main() {
     Bike bike = Bike("RE", 80, "Himalayan");
+}
+```
+
+### Destructor
+> Special member function used to "destruct" an object by cleaning up. It closes any files it opened, releases resources, unlocks semaphores and so on. Destructors can be virtual, making sure the child can implement its own destructor. Only one destructor can be defined for a class, and has no return type. If a class doesn't have a destructor, the compiler generates a destructor that does nothing. So when nothing is to be done, its best to omit the destructor and let the compiler generate one.
+```c++
+#include <iostream>
+using namespace std;
+
+class Bike {
+public: 
+    ~Bike() {
+        //Releases any locks, resources and prevents memory leaks
+    }
+};
+```
+
+### Inheritance and Dynamic Binding 
+> It enables extensibility. It allows to capture a is-a relationship or kind-of relationship (Car is-a vehicle, Dog is a kind-of Animal).
+
+> Abstract Classes are incomplete classes, which are then completed by its derived classes. If properly designed, it enables extensibility by avoiding the ripple effect when new derived classes have been added.
+
+> is-a conversion is the feature that allows the compiler to convert a derived class to it's base class. Dynamic binding is the feature that allows the compiler to convert back the base class to the appropriate derived class.
+
+```c++
+#include <iostream>
+using namespace std;
+
+class MediaPlayer {
+private:
+    string name; 
+public: 
+    virtual void setup() = 0;
+};
+
+class MP3Player : public MediaPlayer {
+public: 
+    void setup() {
+        cout << "MP3 is setting up..." << endl;
+    }
+};
+
+class BlueRayPlayer : public MediaPlayer {
+public: 
+    void setup() {
+        cout << "Blue Ray is setting up... " << endl;
+    }
+};
+
+void initPlayer(MediaPlayer& player) { //At the time of compilation, it doesn't know
+// about the derived classes
+    player.setup();
+}
+
+int main() {
+    MP3Player m;
+    BlueRayPlayer b;
+    initPlayer(m); //is-a conversion at the parameter level
+    initPlayer(b); //dynamic binding inside the body of the function
 }
 ```
 
