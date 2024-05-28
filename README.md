@@ -58,4 +58,63 @@ void fn()
 }
 ```
 
+### Pass by Value 
+> Objects are passed by value to a function, if it needs a local copy to work with. Changes made inside the scope of the function, will not reflect outside the scope of the function. The local object is deleted as it gets out of scope. 
+```c++
+#include <iostream>
+#include "Bike.h"
+using namespace std;
+
+void fn(Bike bike)
+{
+    bike.startEngine(); //Changes here wont affect the bike outside the scope
+}
+
+int main() {
+    Bike bike;
+    fn(bike); 
+    // No changes made to the bike here 
+}
+```
+
+### Pass by Reference
+> Objects are passed by reference to a function, when the function wants to retain ownership of the object even after the call returns to the caller. Since the object ownership is retained, the object isn't deleted when the function gets out of scope. 
+```c++
+#include <iostream>
+#include "Bike.h"
+using namespace std;
+
+void fn(Bike& bike)
+{
+    bike.startEngine(); //Changes here will affect the bike outside the scope
+}
+
+int main() {
+    Bike bike;
+    fn(bike); 
+    //Changes are made to the bike here 
+}
+```
+
+### Pass by Pointer
+> Objects are rarely passed by raw pointers. Usually they are passed using smart pointers. Objects are passed by smart pointers to a function, when the ownership of the object is to be transferred. Raw pointers are used when function needs to handle, NULL as a valid input. Use of smart pointers, leads to deletion of the object as the function gets out of scope, since the ownership has been transferred. But the use of raw pointers doesn't lead to deletion once the function gets out of scope.
+```c++
+#include <iostream>
+#include <memory>
+#include "Bike.h"
+using namespace std;
+
+typedef auto_ptr<Car> carPtr;
+
+void fn(Car *car) // Use of raw pointers
+{
+    // function body
+} // car doesn't get deleted here
+
+void fn(carPtr car)
+{
+    // function body
+} // car get's deleted here, since ownership has been transferred
+```
+
 
