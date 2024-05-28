@@ -139,4 +139,17 @@ int main() {
 
 > In C++ style programmming, it is advised to create variables as and when required, since some parts of the code can be avoided due to control flows and alternate variables can be created accordingly. This is a minor improvement over the C convention. Nothing to lose by following this newer convention, in some cases, we have something to gain. 
 
+### Container Classes
+> Most common use of templates are container classes. Container classes are used to create objects that hold other objects. Examples are, maps, vectors, linked lists and so on.
+
+### Creating Header Files
+> While creating header files, **header guards** or **include guards** are used to make sure, the header file is processed only once. They are preprocessor directives.
+```c++
+#ifndef Bike.h
+#define Bike.h
+
+// Contents of the bike header
+
+#endif
+```
 
