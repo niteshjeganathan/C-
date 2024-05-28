@@ -43,4 +43,19 @@ void fn() // When a function is called, a new stack frame is created on top of t
 
 ### Dynamic Objects (Heap Objects)
 > It uses the keyword "new". Memory manangement is left to the programmer. So a manual delete() call is required when the object is to be destroyed, or it will lead to memory leaks. Use of smart pointers, takes care of the memory management problems.
+```c++
+#include <iostream>
+#include "Car.h"
+using namespace std;
+
+void fn()
+{
+    Car *carPtr = new Car(); //Dynamic Allocation of Memory in Heap
+    carPtr->startEngine();
+    carPtr->honk();
+    delete (carPtr); //Manual Deallocation of Memory
+    //If omitted, leads to memory leaks. 
+}
+```
+
 
