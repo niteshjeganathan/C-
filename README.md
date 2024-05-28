@@ -153,3 +153,25 @@ int main() {
 #endif
 ```
 
+### Constructor
+> Special member function used to "construct" an object by initialising member data. They are not virtual, and have no return type. It allows an initialisation list for convenience.
+```c++
+#include <iostream>
+using namespace std;
+
+class Bike {
+private: 
+    string manufacturer; 
+    int horsepower; 
+    string model;
+public: 
+    Bike(string m, int h, string mo) : manufacturer(m), horsepower(h), model(mo) {
+        //Constructor body
+    }
+};
+
+int main() {
+    Bike bike = Bike("RE", 80, "Himalayan");
+}
+```
+
