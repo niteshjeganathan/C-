@@ -236,3 +236,11 @@ int main() {
 }
 ```
 
+### References
+> It is an alias, an alternate name for an object. Reference is the variable, that is used as an alias. Referent is the variable, that it points to. Referents are attached to the references as soon as they are initialised.
+
+> Any changes made to the reference, is reflected on the referent. Since it is not a copy, not a pointer, but the referent itself. The reference can't be separated from the alias. Once attached, it will always be it's reference.
+
+> Pointers are usually not preferred. They are to be used when pointers are supposed to change the variable it points to, throughout the execution of the program. 
+
+
